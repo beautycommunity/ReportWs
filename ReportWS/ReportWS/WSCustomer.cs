@@ -48,7 +48,7 @@ namespace ReportWS
 
             lsvSearch.Items.Clear();
 
-            string strconn = @"Data Source=192.168.1.77,1434;Initial Catalog=MONA110601;User Id=sa;Password=0211;";
+            string strconn = "Data Source=192.168.1.77,1434;Initial Catalog=MONA110601;User Id=sa;Password=0211;";
 
             if (SBrand.Length > 2)
             {
