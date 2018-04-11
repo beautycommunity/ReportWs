@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace ReportWS
 {
-    public partial class FormMain : kBeauty.Library.frmSub
+    public partial class FormMain : kBeautyLibrary.frmSub
     {
         public FormMain()
         {
