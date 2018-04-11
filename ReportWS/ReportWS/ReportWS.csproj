@@ -54,6 +54,18 @@
     <Compile Include="frmBrandDialog.Designer.cs">
       <DependentUpon>frmBrandDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmRPTByMonth.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRPTByMonth.Designer.cs">
+      <DependentUpon>frmRPTByMonth.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRPTByMonthCond.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRPTByMonthCond.Designer.cs">
+      <DependentUpon>frmRPTByMonthCond.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmSearchDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -94,6 +106,12 @@
     </Compile>
     <EmbeddedResource Include="frmBrandDialog.resx">
       <DependentUpon>frmBrandDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRPTByMonth.resx">
+      <DependentUpon>frmRPTByMonth.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRPTByMonthCond.resx">
+      <DependentUpon>frmRPTByMonthCond.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSearchDialog.resx">
       <DependentUpon>frmSearchDialog.cs</DependentUpon>
