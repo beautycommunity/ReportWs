@@ -30,9 +30,12 @@
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menu = new System.Windows.Forms.ToolStripMenuItem();
+            this.รายงานรายปToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.รายงานตามลกคาToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuOffline = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuExit = new System.Windows.Forms.ToolStripMenuItem();
+            this.รายงานตามพนกงานToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,6 +55,9 @@
             // menu
             // 
             this.menu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.รายงานรายปToolStripMenuItem,
+            this.รายงานตามพนกงานToolStripMenuItem,
+            this.รายงานตามลกคาToolStripMenuItem,
             this.mnuOffline,
             this.toolStripMenuItem3,
             this.mnuExit});
@@ -59,24 +65,45 @@
             this.menu.Size = new System.Drawing.Size(78, 20);
             this.menu.Text = "ReportWS";
             // 
+            // รายงานรายปToolStripMenuItem
+            // 
+            this.รายงานรายปToolStripMenuItem.Name = "รายงานรายปToolStripMenuItem";
+            this.รายงานรายปToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.รายงานรายปToolStripMenuItem.Text = "รายงานรายปี";
+            this.รายงานรายปToolStripMenuItem.Click += new System.EventHandler(this.รายงานรายปToolStripMenuItem_Click);
+            // 
+            // รายงานตามลกคาToolStripMenuItem
+            // 
+            this.รายงานตามลกคาToolStripMenuItem.Name = "รายงานตามลกคาToolStripMenuItem";
+            this.รายงานตามลกคาToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.รายงานตามลกคาToolStripMenuItem.Text = "รายงานตามลูกค้า";
+            this.รายงานตามลกคาToolStripMenuItem.Click += new System.EventHandler(this.รายงานตามลกคาToolStripMenuItem_Click);
+            // 
             // mnuOffline
             // 
             this.mnuOffline.CheckOnClick = true;
             this.mnuOffline.Name = "mnuOffline";
-            this.mnuOffline.Size = new System.Drawing.Size(182, 22);
+            this.mnuOffline.Size = new System.Drawing.Size(183, 22);
             this.mnuOffline.Text = "รายงานแบบละเอียด";
             this.mnuOffline.Click += new System.EventHandler(this.mnuOffline_Click);
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(179, 6);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(180, 6);
             // 
             // mnuExit
             // 
             this.mnuExit.Name = "mnuExit";
-            this.mnuExit.Size = new System.Drawing.Size(182, 22);
+            this.mnuExit.Size = new System.Drawing.Size(183, 22);
             this.mnuExit.Text = "Exit";
+            // 
+            // รายงานตามพนกงานToolStripMenuItem
+            // 
+            this.รายงานตามพนกงานToolStripMenuItem.Name = "รายงานตามพนกงานToolStripMenuItem";
+            this.รายงานตามพนกงานToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.รายงานตามพนกงานToolStripMenuItem.Text = "รายงานตามพนักงาน";
+            this.รายงานตามพนกงานToolStripMenuItem.Click += new System.EventHandler(this.รายงานตามพนกงานToolStripMenuItem_Click);
             // 
             // FormMain
             // 
@@ -101,6 +128,9 @@
         private System.Windows.Forms.ToolStripMenuItem mnuOffline;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem mnuExit;
+        private System.Windows.Forms.ToolStripMenuItem รายงานรายปToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem รายงานตามลกคาToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem รายงานตามพนกงานToolStripMenuItem;
     }
 }
 

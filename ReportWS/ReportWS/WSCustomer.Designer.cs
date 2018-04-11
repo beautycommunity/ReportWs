@@ -1,6 +1,6 @@
 ﻿namespace ReportWS
 {
-    partial class WSDetail
+    partial class WSCustomer
     {
         /// <summary>
         /// Required designer variable.
@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WSDetail));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WSCustomer));
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuExportError = new System.Windows.Forms.ToolStripDropDownButton();
+            this.mnuExportExcel = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnClose = new System.Windows.Forms.ToolStripButton();
-            this.mnuExportExcel = new System.Windows.Forms.ToolStripMenuItem();
             this.lsvSearch = new kBeautyLibrary.kbListView(this.components);
             this.toolStrip2.SuspendLayout();
             this.SuspendLayout();
@@ -53,8 +53,8 @@
             this.btnClose});
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(862, 39);
-            this.toolStrip2.TabIndex = 209;
+            this.toolStrip2.Size = new System.Drawing.Size(909, 39);
+            this.toolStrip2.TabIndex = 210;
             this.toolStrip2.Text = "toolStrip2";
             // 
             // toolStripButton1
@@ -83,6 +83,13 @@
             this.mnuExportError.Size = new System.Drawing.Size(114, 36);
             this.mnuExportError.Text = "ส่งออกข้อมูล";
             // 
+            // mnuExportExcel
+            // 
+            this.mnuExportExcel.Name = "mnuExportExcel";
+            this.mnuExportExcel.Size = new System.Drawing.Size(152, 22);
+            this.mnuExportExcel.Text = "Excel";
+            this.mnuExportExcel.Click += new System.EventHandler(this.mnuExportExcel_Click);
+            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
@@ -98,13 +105,6 @@
             this.btnClose.Text = "ปิดหน้าต่าง";
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // mnuExportExcel
-            // 
-            this.mnuExportExcel.Name = "mnuExportExcel";
-            this.mnuExportExcel.Size = new System.Drawing.Size(152, 22);
-            this.mnuExportExcel.Text = "Excel";
-            this.mnuExportExcel.Click += new System.EventHandler(this.mnuExportExcel_Click);
-            // 
             // lsvSearch
             // 
             this.lsvSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -116,21 +116,21 @@
             this.lsvSearch.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.lsvSearch.Name = "lsvSearch";
             this.lsvSearch.Row = null;
-            this.lsvSearch.Size = new System.Drawing.Size(836, 448);
-            this.lsvSearch.TabIndex = 212;
+            this.lsvSearch.Size = new System.Drawing.Size(883, 439);
+            this.lsvSearch.TabIndex = 213;
             this.lsvSearch.UseCompatibleStateImageBehavior = false;
             this.lsvSearch.View = System.Windows.Forms.View.Details;
             // 
-            // WSDetail
+            // WSCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(862, 502);
+            this.ClientSize = new System.Drawing.Size(909, 493);
             this.Controls.Add(this.lsvSearch);
             this.Controls.Add(this.toolStrip2);
-            this.Name = "WSDetail";
-            this.Text = "WSDetail";
-            this.Load += new System.EventHandler(this.WSDetail_Load);
+            this.Name = "WSCustomer";
+            this.Text = "WSEmployee";
+            this.Load += new System.EventHandler(this.WSEmployee_Load);
             this.toolStrip2.ResumeLayout(false);
             this.toolStrip2.PerformLayout();
             this.ResumeLayout(false);
@@ -144,9 +144,9 @@
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripDropDownButton mnuExportError;
+        private System.Windows.Forms.ToolStripMenuItem mnuExportExcel;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton btnClose;
-        private System.Windows.Forms.ToolStripMenuItem mnuExportExcel;
         private kBeautyLibrary.kbListView lsvSearch;
     }
 }
