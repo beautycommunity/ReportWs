@@ -16,7 +16,7 @@ namespace ReportWS
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmRPTByMonth());
+            Application.Run(new FormMain());
         }
     }
 }

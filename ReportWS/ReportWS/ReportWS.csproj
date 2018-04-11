@@ -51,18 +51,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="frmBrandDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmBrandDialog.Designer.cs">
-      <DependentUpon>frmBrandDialog.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmSearchDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmSearchDialog.Designer.cs">
-      <DependentUpon>frmSearchDialog.cs</DependentUpon>
-    </Compile>
     <Compile Include="Report.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,30 +65,6 @@
     <Compile Include="WSDetail.Designer.cs">
       <DependentUpon>WSDetail.cs</DependentUpon>
     </Compile>
-    <Compile Include="WSCustomer.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WSCustomer.Designer.cs">
-      <DependentUpon>WSCustomer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="WSEmployee.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WSEmployee.Designer.cs">
-      <DependentUpon>WSEmployee.cs</DependentUpon>
-    </Compile>
-    <Compile Include="WSYEAR.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WSYEAR.Designer.cs">
-      <DependentUpon>WSYEAR.cs</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="frmBrandDialog.resx">
-      <DependentUpon>frmBrandDialog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmSearchDialog.resx">
-      <DependentUpon>frmSearchDialog.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Report.resx">
       <DependentUpon>Report.cs</DependentUpon>
     </EmbeddedResource>
@@ -115,15 +79,6 @@
     </Compile>
     <EmbeddedResource Include="WSDetail.resx">
       <DependentUpon>WSDetail.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WSCustomer.resx">
-      <DependentUpon>WSCustomer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WSEmployee.resx">
-      <DependentUpon>WSEmployee.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WSYEAR.resx">
-      <DependentUpon>WSYEAR.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
