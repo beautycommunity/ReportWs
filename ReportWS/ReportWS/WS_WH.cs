@@ -11,19 +11,19 @@ using System.Windows.Forms;
 
 namespace ReportWS
 {
-    public partial class WSCustomer : Form
+    public partial class WS_WH : Form
     {
         string StrConn;
         string Brand;
 
-        public WSCustomer()
+        public WS_WH()
         {
             InitializeComponent();
             StrConn = "Data Source = 192.168.1.24,1833; Initial Catalog =cmd-bx; Persist Security Info = True; User ID = sa; Password = 0211";
             Brand = "BC";
         }
 
-        public WSCustomer(string _strconn, string _brand)
+        public WS_WH(string _strconn, string _brand)
         {
             InitializeComponent();
             StrConn = _strconn;
@@ -41,17 +41,21 @@ namespace ReportWS
             }
         }
 
+        private void WS_WH_Load(object sender, EventArgs e)
+        {
+            Myinit();
+        }
+
         private void Myinit()
         {
             lsvSearch.LabelWrap = true;
             // Add Columns     
             lsvSearch.Columns.Add("ลำดับ", 50, HorizontalAlignment.Left);
-            lsvSearch.Columns.Add("รหัสสมาชิก", 80, HorizontalAlignment.Left);
-            lsvSearch.Columns.Add("ชื่อสมาชิก", 100, HorizontalAlignment.Left);
+            lsvSearch.Columns.Add("รหัสสาขา", 80, HorizontalAlignment.Left);
+            lsvSearch.Columns.Add("ชื่อสาขา", 100, HorizontalAlignment.Left);
             lsvSearch.Columns.Add("แบนด์", 90, HorizontalAlignment.Left);
             lsvSearch.Columns.Add("จำนวน", 80, HorizontalAlignment.Left);
             lsvSearch.Columns.Add("ยอด", 160, HorizontalAlignment.Left);
-            lsvSearch.Columns.Add("ค่าเฉลี่ย", 60, HorizontalAlignment.Left);
         }
 
         private void SearchPOS(string dateStart, string dateEnd)
@@ -60,20 +64,19 @@ namespace ReportWS
 
             string strconn = StrConn;
 
-            string sql = @"select arcode,arname,project,count(docno) as qty,sum(debtamount) as net ,
-                            sum(debtamount) / count(docno) as avg
-                            from(
-                            select a.arcode, isnull(b.NAMETH, a.arname) as arname, docno, project, a.debtamount
-                            from [192.168.1.77,1434].[MONA110601].dbo.cssaleorder a
-                            left join [192.168.1.77,1434].[MONA110601].dbo.CSar b on a.arcode = b.code
-                            where a.CLOSEFLAG = 0
-                            and a.docno like '%WS%'
-                            and(a.docno  like '5%' or a.docno  like '1%')
-                            AND project = '"+ Brand + @"'
-                            AND a.DOCDATE BETWEEN '"+ dateEnd + @"' AND '"+ dateEnd + @"'
-                            ) as a
-                            group by arcode,arname,project
-                            order by project, arcode";
+            string sql = @"select whcode,whname,PROJECT ,count(docno) as qty ,sum(debtamount) as net from (
+                         select substring(a.DOCNO,1,4) as whcode,b.MYNAMETH as whname,a.PROJECT  ,docno ,debtamount
+                         from [192.168.1.77,1434].[MONA110601].dbo.cssaleorder a
+                         left join [192.168.1.77,1434].[MONA110601].dbo.cswarehouse b on substring(a.DOCNO,1,4) = b.code
+                         where a.CLOSEFLAG = 0
+                         and a.docno like '%WS%'
+                         and (a.docno like '5%' or a.docno like '1%')
+                         AND A.DOCDATE BETWEEN '"+ dateStart + @"' AND '"+ dateEnd + @"'
+                         AND A.PROJECT = '"+ Brand + @"'
+                         ) as a
+                         group by whcode, whname, PROJECT
+                         order by PROJECT ,whcode";
+
             DataSet ds = cData.getDataSetWithQueryCommand(strconn, sql, 1000, true);
 
             if (ds.Tables[0].Rows.Count <= 0)
@@ -85,11 +88,6 @@ namespace ReportWS
             lsvSearch.addDataWithDataset(ds, true, false);
         }
 
-        private void WSEmployee_Load(object sender, EventArgs e)
-        {
-            Myinit();
-        }
-
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -97,7 +95,7 @@ namespace ReportWS
 
         private void mnuExportExcel_Click(object sender, EventArgs e)
         {
-            lsvSearch.ExportToExcel("1,2,3,4,5,6,7");
+            lsvSearch.ExportToExcel("1,2,3,4,5");
         }
     }
 }

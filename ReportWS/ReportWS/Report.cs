@@ -40,5 +40,11 @@ namespace ReportWS
             WSEmployee frm_Emp = new WSEmployee();
             frm_Emp.ShowDialog();
         }
+
+        private void รายงานตามสาขาToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            WS_WH frm_WH = new WS_WH();
+            frm_WH.ShowDialog();
+        }
     }
 }

@@ -13,20 +13,31 @@ namespace ReportWS
 {
     public partial class WSEmployee : Form
     {
+        string StrConn;
+        string Brand;
+
         public WSEmployee()
         {
             InitializeComponent();
+            StrConn = "Data Source = 192.168.1.24,1833; Initial Catalog =cmd-bx; Persist Security Info = True; User ID = sa; Password = 0211";
+            Brand = "BC";
         }
 
+        public WSEmployee(string _strconn, string _brand)
+        {
+            InitializeComponent();
+            StrConn = _strconn;
+            Brand = _brand;
+        }
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
-            frmBrandDialog frm = new frmBrandDialog();
+            frmSearchDialog frm = new frmSearchDialog();
             frm.ShowDialog();
 
             if (frm.closedOK)
             {
-                SearchPOS(frm.Brand);
+                SearchPOS(frm.dateStart, frm.dateEnd);
             }
         }
 
@@ -48,58 +59,49 @@ namespace ReportWS
             lsvSearch.Columns.Add("ค่าเฉลี่ย", 60, HorizontalAlignment.Left);
         }
 
-        private void SearchPOS(string Brand)
+        private void SearchPOS(string dateStart, string dateEnd)
         {
-            string SBrand = Brand;
-
             lsvSearch.Items.Clear();
 
-            string strconn = @"Data Source=192.168.1.77,1434;Initial Catalog=MONA110601;User Id=sa;Password=0211;";
+            string strconn = StrConn;
 
-            if (SBrand.Length > 2)
+            string sql = "WITH ANS AS ( ";
+            sql += "select stcode, stname, project, count(docno) as qty,sum(debtamount) as net , ";
+            sql += "sum(debtamount) / count(docno) as avg from( ";
+            if (Brand == "BB")
             {
-                string sql = "WITH ANS AS ( select stcode,stname,project,count(docno) as qty,sum(debtamount) as net ";
-                sql += ",sum(debtamount)/count(docno) as avg from (select b.stcode,isnull(b.stname,'') as stname, ";
-                sql += "a.docno,project,a.debtamount from cssaleorder a ";
-                sql += "left join [192.168.1.220].[dbbeautycommsupport].dbo.doc_st_wh b on a.DOCNO = b.docno ";
-                sql += "where a.CLOSEFLAG = 0 and a.docno like '%WS%' and (a.docno  like '1%') union all ";
-                sql += "select b.stcode,isnull(b.stname,'') as stname,a.docno,project,a.debtamount ";
-                sql += "from cssaleorder a ";
-                sql += "left join [192.168.1.24,1833].[dbbeautycommsupport].dbo.doc_st_wh b on a.DOCNO = b.docno ";
-                sql += "where a.CLOSEFLAG = 0 and a.docno like '%WS%' and (a.docno  like '5%')) as a ";
-                sql += "group by stcode,stname,project) SELECT * FROM ANS order by project,stcode";
-                DataSet ds = cData.getDataSetWithQueryCommand(strconn, sql, 1000, true);
-
-                if (ds.Tables[0].Rows.Count <= 0)
-                {
-                    cMessage.ErrorNoData();
-                    return;
-                }
-
-                lsvSearch.addDataWithDataset(ds, true, false);
+                sql += @"select b.stcode, isnull(b.stname, '') as stname, a.docno, project, a.debtamount 
+                from [192.168.1.77,1434].[MONA110601].dbo.cssaleorder a 
+                left join[dbbeautycommsupport].dbo.doc_st_wh b on a.DOCNO = b.docno 
+                where a.CLOSEFLAG = 0 
+                and a.docno like '%WS%'
+                and(a.docno  like '1%') 
+                AND A.DOCDATE BETWEEN '"+ dateStart + @"' AND '"+ dateEnd + "'";
             }
-            else
+            else if(Brand == "BC")
             {
-                string sql = "WITH ANS AS ( select stcode,stname,project,count(docno) as qty,sum(debtamount) as net ";
-                sql += ",sum(debtamount)/count(docno) as avg from (select b.stcode,isnull(b.stname,'') as stname, ";
-                sql += "a.docno,project,a.debtamount from cssaleorder a ";
-                sql += "left join [192.168.1.220].[dbbeautycommsupport].dbo.doc_st_wh b on a.DOCNO = b.docno ";
-                sql += "where a.CLOSEFLAG = 0 and a.docno like '%WS%' and (a.docno  like '1%') union all ";
-                sql += "select b.stcode,isnull(b.stname,'') as stname,a.docno,project,a.debtamount ";
-                sql += "from cssaleorder a ";
-                sql += "left join [192.168.1.24,1833].[dbbeautycommsupport].dbo.doc_st_wh b on a.DOCNO = b.docno ";
-                sql += "where a.CLOSEFLAG = 0 and a.docno like '%WS%' and (a.docno  like '5%')) as a ";
-                sql += "group by stcode,stname,project) SELECT * FROM ANS WHERE PROJECT = '"+ SBrand + "' order by project,stcode";
-                DataSet ds = cData.getDataSetWithQueryCommand(strconn, sql, 1000, true);
-
-                if (ds.Tables[0].Rows.Count <= 0)
-                {
-                    cMessage.ErrorNoData();
-                    return;
-                }
-
-                lsvSearch.addDataWithDataset(ds, true, false);
+                sql += @"select b.stcode, isnull(b.stname, '') as stname, a.docno, project, a.debtamount 
+                from [192.168.1.77,1434].[MONA110601].dbo.cssaleorder a
+                left join [dbbeautycommsupport].dbo.doc_st_wh b on a.DOCNO = b.docno
+                where a.CLOSEFLAG = 0
+                and a.docno like '%WS%'
+                and(a.docno like '5%')
+                AND A.DOCDATE BETWEEN '" + dateStart + @"' AND '" + dateEnd + "'";
             }
+
+            sql += @") as a group by stcode,stname,project )        
+            SELECT* FROM ANS
+            order by project,stcode";
+            
+            DataSet ds = cData.getDataSetWithQueryCommand(strconn, sql, 1000, true);
+
+            if (ds.Tables[0].Rows.Count <= 0)
+            {
+                cMessage.ErrorNoData();
+                return;
+            }
+
+            lsvSearch.addDataWithDataset(ds, true, false);
         }
 
         private void btnClose_Click(object sender, EventArgs e)
