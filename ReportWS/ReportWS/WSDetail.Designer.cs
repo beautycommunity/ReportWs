@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WSDetail));
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
@@ -37,7 +36,6 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnClose = new System.Windows.Forms.ToolStripButton();
             this.mnuExportExcel = new System.Windows.Forms.ToolStripMenuItem();
-            this.lsvSearch = new kBeautyLibrary.kbListView(this.components);
             this.toolStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -96,41 +94,21 @@
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(98, 36);
             this.btnClose.Text = "ปิดหน้าต่าง";
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // mnuExportExcel
             // 
             this.mnuExportExcel.Name = "mnuExportExcel";
             this.mnuExportExcel.Size = new System.Drawing.Size(152, 22);
             this.mnuExportExcel.Text = "Excel";
-            this.mnuExportExcel.Click += new System.EventHandler(this.mnuExportExcel_Click);
-            // 
-            // lsvSearch
-            // 
-            this.lsvSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lsvSearch.FullRowSelect = true;
-            this.lsvSearch.GridLines = true;
-            this.lsvSearch.Location = new System.Drawing.Point(13, 42);
-            this.lsvSearch.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.lsvSearch.Name = "lsvSearch";
-            this.lsvSearch.Row = null;
-            this.lsvSearch.Size = new System.Drawing.Size(836, 448);
-            this.lsvSearch.TabIndex = 212;
-            this.lsvSearch.UseCompatibleStateImageBehavior = false;
-            this.lsvSearch.View = System.Windows.Forms.View.Details;
             // 
             // WSDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(862, 502);
-            this.Controls.Add(this.lsvSearch);
             this.Controls.Add(this.toolStrip2);
             this.Name = "WSDetail";
             this.Text = "WSDetail";
-            this.Load += new System.EventHandler(this.WSDetail_Load);
             this.toolStrip2.ResumeLayout(false);
             this.toolStrip2.PerformLayout();
             this.ResumeLayout(false);
@@ -147,6 +125,5 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton btnClose;
         private System.Windows.Forms.ToolStripMenuItem mnuExportExcel;
-        private kBeautyLibrary.kbListView lsvSearch;
     }
 }
