@@ -31,11 +31,12 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menu = new System.Windows.Forms.ToolStripMenuItem();
             this.รายงานรายปToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.รายงานตามพนกงานToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.รายงานตามลกคาToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuOffline = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuExit = new System.Windows.Forms.ToolStripMenuItem();
-            this.รายงานตามพนกงานToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.รายงานตามสาขาToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,6 +60,7 @@
             this.รายงานตามพนกงานToolStripMenuItem,
             this.รายงานตามลกคาToolStripMenuItem,
             this.mnuOffline,
+            this.รายงานตามสาขาToolStripMenuItem,
             this.toolStripMenuItem3,
             this.mnuExit});
             this.menu.Name = "menu";
@@ -71,6 +73,13 @@
             this.รายงานรายปToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
             this.รายงานรายปToolStripMenuItem.Text = "รายงานรายปี";
             this.รายงานรายปToolStripMenuItem.Click += new System.EventHandler(this.รายงานรายปToolStripMenuItem_Click);
+            // 
+            // รายงานตามพนกงานToolStripMenuItem
+            // 
+            this.รายงานตามพนกงานToolStripMenuItem.Name = "รายงานตามพนกงานToolStripMenuItem";
+            this.รายงานตามพนกงานToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.รายงานตามพนกงานToolStripMenuItem.Text = "รายงานตามพนักงาน";
+            this.รายงานตามพนกงานToolStripMenuItem.Click += new System.EventHandler(this.รายงานตามพนกงานToolStripMenuItem_Click);
             // 
             // รายงานตามลกคาToolStripMenuItem
             // 
@@ -98,12 +107,12 @@
             this.mnuExit.Size = new System.Drawing.Size(183, 22);
             this.mnuExit.Text = "Exit";
             // 
-            // รายงานตามพนกงานToolStripMenuItem
+            // รายงานตามสาขาToolStripMenuItem
             // 
-            this.รายงานตามพนกงานToolStripMenuItem.Name = "รายงานตามพนกงานToolStripMenuItem";
-            this.รายงานตามพนกงานToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
-            this.รายงานตามพนกงานToolStripMenuItem.Text = "รายงานตามพนักงาน";
-            this.รายงานตามพนกงานToolStripMenuItem.Click += new System.EventHandler(this.รายงานตามพนกงานToolStripMenuItem_Click);
+            this.รายงานตามสาขาToolStripMenuItem.Name = "รายงานตามสาขาToolStripMenuItem";
+            this.รายงานตามสาขาToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.รายงานตามสาขาToolStripMenuItem.Text = "รายงานตามสาขา";
+            this.รายงานตามสาขาToolStripMenuItem.Click += new System.EventHandler(this.รายงานตามสาขาToolStripMenuItem_Click);
             // 
             // FormMain
             // 
@@ -131,6 +140,7 @@
         private System.Windows.Forms.ToolStripMenuItem รายงานรายปToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem รายงานตามลกคาToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem รายงานตามพนกงานToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem รายงานตามสาขาToolStripMenuItem;
     }
 }
 
