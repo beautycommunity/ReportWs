@@ -44,6 +44,7 @@ namespace ReportWS
         private void WS_WH_Load(object sender, EventArgs e)
         {
             Myinit();
+
         }
 
         private void Myinit()
