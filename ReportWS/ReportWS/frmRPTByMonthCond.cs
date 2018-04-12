@@ -12,7 +12,7 @@ using kBeautyLibrary;
 
 namespace ReportWS
 {
-    public partial class frmRPTByMonthCond : frmSub
+    public partial class frmRPTByMonthCond : frmDialogReportCondition
     {
        
         string StrConn;
@@ -35,6 +35,8 @@ namespace ReportWS
             cmbYear.Items.Add(DateTime.Now.Year - 3);
 
             cmbYear.SelectedIndex = 0;
+
+
         }
 
         public frmRPTByMonthCond(string _strconn,string _brand,ref TextBox _txtsql,ref TextBox _txtbl)
@@ -52,21 +54,19 @@ namespace ReportWS
             cmbYear.Items.Add(DateTime.Now.Year - 3);
 
             cmbYear.SelectedIndex = 0;
-        }
 
-        private void tsbClose_Click(object sender, EventArgs e)
-        {
             txtBl.Text = "false";
-            this.Close();
         }
 
-        private void tsbOk_Click(object sender, EventArgs e)
+
+        protected override void btnSubmit_Click(object sender, EventArgs e)
         {
+            //base.btnSubmit_Click(sender, e);
             string sql = "";
             string idBrand = "";
             string whstr = "";
 
-            if(Brand.ToLower() == "bb")
+            if (Brand.ToLower() == "bb")
             {
                 idBrand = "a.docno  like '1%'";
             }
@@ -79,7 +79,7 @@ namespace ReportWS
                 idBrand = "a.docno  like '7%'";
             }
 
-            if(chkAll.Checked == false)
+            if (chkAll.Checked == false)
             {
                 whstr = " and a.docyear = '" + cmbYear.Text + "'";
             }
