@@ -54,7 +54,7 @@ namespace ReportWS
             // Add Columns     
             lsvSearch.Columns.Add("ลำดับ", 50, HorizontalAlignment.Left);
             lsvSearch.Columns.Add("รหัสสาขา", 80, HorizontalAlignment.Left);
-            lsvSearch.Columns.Add("ชื่อสาขา", 100, HorizontalAlignment.Left);
+            lsvSearch.Columns.Add("ชื่อสาขา", 180, HorizontalAlignment.Left);
             lsvSearch.Columns.Add("แบนด์", 90, HorizontalAlignment.Left);
             lsvSearch.Columns.Add("จำนวน", 80, HorizontalAlignment.Left);
             lsvSearch.Columns.Add("ยอด", 160, HorizontalAlignment.Left);
@@ -62,15 +62,17 @@ namespace ReportWS
 
         private void SearchPOS(string dateStart, string dateEnd)
         {
-            using (new cWaitIndicator())
+            try
             {
-                Thread.Sleep(100);
+                using (new cWaitIndicator())
+                {
+                    Thread.Sleep(100);
 
-                lsvSearch.Items.Clear();
+                    lsvSearch.Items.Clear();
 
-                string strconn = StrConn;
+                    string strconn = StrConn;
 
-                string sql = @"select whcode,whname,PROJECT ,count(docno) as qty ,CONVERT(varchar, CAST(sum(debtamount) AS money), 1) as net from (
+                    string sql = @"select whcode,whname,PROJECT ,count(docno) as qty ,CONVERT(varchar, CAST(sum(debtamount) AS money), 1) as net from (
                          select substring(a.DOCNO,1,4) as whcode,b.MYNAMETH as whname,a.PROJECT  ,docno ,debtamount
                          from [192.168.1.77,1434].[MONA110601].dbo.cssaleorder a
                          left join [192.168.1.77,1434].[MONA110601].dbo.cswarehouse b on substring(a.DOCNO,1,4) = b.code
@@ -83,15 +85,21 @@ namespace ReportWS
                          group by whcode, whname, PROJECT
                          order by PROJECT ,whcode";
 
-                DataSet ds = cData.getDataSetWithQueryCommand(strconn, sql, 1000, true);
+                    DataSet ds = cData.getDataSetWithQueryCommand(strconn, sql, 1000, true);
 
-                if (ds.Tables[0].Rows.Count <= 0)
-                {
-                    cMessage.ErrorNoData();
-                    return;
+                    if (ds.Tables[0].Rows.Count <= 0)
+                    {
+                        cMessage.ErrorNoData();
+                        //return;
+                    }
+
+                    lsvSearch.addDataWithDataset(ds, true, false);
+
                 }
+            }
+            catch 
+            {
 
-                lsvSearch.addDataWithDataset(ds, true, false);
             }
         }
 

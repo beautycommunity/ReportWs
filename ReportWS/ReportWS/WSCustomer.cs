@@ -48,7 +48,7 @@ namespace ReportWS
             // Add Columns     
             lsvSearch.Columns.Add("ลำดับ", 50, HorizontalAlignment.Left);
             lsvSearch.Columns.Add("รหัสสมาชิก", 80, HorizontalAlignment.Left);
-            lsvSearch.Columns.Add("ชื่อสมาชิก", 100, HorizontalAlignment.Left);
+            lsvSearch.Columns.Add("ชื่อสมาชิก", 180, HorizontalAlignment.Left);
             lsvSearch.Columns.Add("แบนด์", 90, HorizontalAlignment.Left);
             lsvSearch.Columns.Add("จำนวน", 80, HorizontalAlignment.Left);
             lsvSearch.Columns.Add("ยอด", 100, HorizontalAlignment.Left);
@@ -83,7 +83,7 @@ namespace ReportWS
                 if (ds.Tables[0].Rows.Count <= 0)
                 {
                     cMessage.ErrorNoData();
-                    return;
+                    //return;
                 }
 
                 lsvSearch.addDataWithDataset(ds, true, false);

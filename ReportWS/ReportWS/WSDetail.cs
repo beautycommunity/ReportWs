@@ -47,7 +47,7 @@ namespace ReportWS
             lsvSearch.LabelWrap = true;
             // Add Columns     
             lsvSearch.Columns.Add("ลำดับ", 50, HorizontalAlignment.Left);
-            lsvSearch.Columns.Add("วัน/เดือน/ปี", 120, HorizontalAlignment.Left);
+            lsvSearch.Columns.Add("วัน/เดือน/ปี", 100, HorizontalAlignment.Left);
             lsvSearch.Columns.Add("เลขที่เอกสาร", 100, HorizontalAlignment.Left);
             lsvSearch.Columns.Add("ยอด", 90, HorizontalAlignment.Left);
             lsvSearch.Columns.Add("รหัสสมาชิก", 80, HorizontalAlignment.Left);
@@ -55,7 +55,7 @@ namespace ReportWS
             lsvSearch.Columns.Add("รหัสสาขา", 60, HorizontalAlignment.Left);
             lsvSearch.Columns.Add("ชื่อสาขา", 150, HorizontalAlignment.Left);
             lsvSearch.Columns.Add("รหัสพนักงาน", 80, HorizontalAlignment.Left);
-            lsvSearch.Columns.Add("ชื่อพนักงาน", 150, HorizontalAlignment.Left);
+            lsvSearch.Columns.Add("ชื่อพนักงาน", 160, HorizontalAlignment.Left);
         }
 
         private void SearchPOS(string dateStart, string dateEnd)
@@ -110,7 +110,7 @@ namespace ReportWS
                             left join [192.168.1.77,1434].[MONA110601].dbo.CSUSER d on a.SALECODE = d.code
                             left join [192.168.1.77,1434].[MONA110601].dbo.CSUSER e on b.stcode = e.code where a.CLOSEFLAG = 0 and a.docno like '%WS%' and a.DEBTAMOUNT> 0 )
                             
-                            select docno,
+                            select docdate1,docno,
                             CONVERT(varchar, CAST(debtamount AS money), 1) AS NET,
                             arcode, arname, whcode, whname, stcode, stname FROM ANS "; 
                 if(Brand == "BC")

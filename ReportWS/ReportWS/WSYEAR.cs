@@ -14,9 +14,21 @@ namespace ReportWS
 {
     public partial class WSYEAR : Form
     {
+        string StrConn;
+        string Brand;
+
         public WSYEAR()
         {
             InitializeComponent();
+            StrConn = "Data Source = 192.168.1.24,1833; Initial Catalog =cmd-bx; Persist Security Info = True; User ID = sa; Password = 0211";
+            Brand = "BC";
+        }
+
+        public WSYEAR(string _strconn, string _brand)
+        {
+            InitializeComponent();
+            StrConn = _strconn;
+            Brand = _brand;
         }
 
         private void WSYEAR_Load(object sender, EventArgs e)
@@ -53,7 +65,7 @@ namespace ReportWS
 
                 string strconn = @"Data Source=192.168.1.77,1434;Initial Catalog=MONA110601;User Id=sa;Password=0211;";
 
-                string sql = "select docyear,count(docno) as qty, ";
+                string sql = "select docyear,REPLACE(CONVERT(varchar(20),(CAST(count(docno) AS money)), 1), '.00', '') as qty, ";
                 sql += "CONVERT(varchar, CAST(sum(debtamount) AS money), 1) as net, CONVERT(varchar, CAST(sum(debtamount)/count(docno) AS money), 1) as avg ";
                 sql += "from (select year(docdate) as docyear,* from  cssaleorder as a ";
                 sql += "where a.CLOSEFLAG = 0 and a.docno like '%WS%' and (a.docno  like '5%' or a.docno  like '1%')) as a ";
@@ -64,7 +76,7 @@ namespace ReportWS
                 if (ds.Tables[0].Rows.Count <= 0)
                 {
                     cMessage.ErrorNoData();
-                    return;
+                    //return;
                 }
 
                 lsvSearch.addDataWithDataset(ds, true, false);

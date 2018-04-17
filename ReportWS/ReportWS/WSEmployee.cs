@@ -53,11 +53,10 @@ namespace ReportWS
             // Add Columns     
             lsvSearch.Columns.Add("ลำดับ", 50, HorizontalAlignment.Left);
             lsvSearch.Columns.Add("รหัสพนักงาน", 80, HorizontalAlignment.Left);
-            lsvSearch.Columns.Add("ชื่อพนักงาน", 100, HorizontalAlignment.Left);
-            lsvSearch.Columns.Add("แบนด์", 90, HorizontalAlignment.Left);
+            lsvSearch.Columns.Add("ชื่อพนักงาน", 180, HorizontalAlignment.Left);
             lsvSearch.Columns.Add("จำนวน", 80, HorizontalAlignment.Left);
-            lsvSearch.Columns.Add("ยอด", 160, HorizontalAlignment.Left);
-            lsvSearch.Columns.Add("ค่าเฉลี่ย", 60, HorizontalAlignment.Left);
+            lsvSearch.Columns.Add("ยอด", 100, HorizontalAlignment.Left);
+            lsvSearch.Columns.Add("ค่าเฉลี่ย", 100, HorizontalAlignment.Left);
         }
 
         private void SearchPOS(string dateStart, string dateEnd)
@@ -106,7 +105,7 @@ namespace ReportWS
                 if (ds.Tables[0].Rows.Count <= 0)
                 {
                     cMessage.ErrorNoData();
-                    return;
+                    //return;
                 }
 
                 lsvSearch.addDataWithDataset(ds, true, false);
