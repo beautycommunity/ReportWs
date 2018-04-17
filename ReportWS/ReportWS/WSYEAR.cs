@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -37,32 +38,37 @@ namespace ReportWS
 
         private void SearchPOS()
         {
-            //string[] itemQuery = new string[] { };
-
-            //string Sdate = dateStart;
-            //DateTime FormatSdate = DateTime.Parse(dateStart);
-            //DateTime FormatEdate = DateTime.Parse(dateEnd);
-            //string Sdate = FormatSdate.ToString("dd/MM/yyyy");
-            //string Edate = FormatEdate.ToString("dd/MM/yyyy");
-
-            //lsvSearch.Items.Clear();
-
-            string strconn = @"Data Source=192.168.1.77,1434;Initial Catalog=MONA110601;User Id=sa;Password=0211;";
-
-            string sql = "select docyear,count(docno) as qty,sum(debtamount) as net, sum(debtamount)/count(docno) as avg ";
-            sql += "from (select year(docdate) as docyear,* from  cssaleorder as a ";
-            sql += "where a.CLOSEFLAG = 0 and a.docno like '%WS%' and (a.docno  like '5%' or a.docno  like '1%')) as a ";
-            sql += "group by docyear";
-
-            DataSet ds = cData.getDataSetWithQueryCommand(strconn, sql, 1000, true);
-
-            if (ds.Tables[0].Rows.Count <= 0)
+            using (new cWaitIndicator())
             {
-                cMessage.ErrorNoData();
-                return;
-            }
+                Thread.Sleep(100);
+                //string[] itemQuery = new string[] { };
 
-            lsvSearch.addDataWithDataset(ds, true, false);
+                //string Sdate = dateStart;
+                //DateTime FormatSdate = DateTime.Parse(dateStart);
+                //DateTime FormatEdate = DateTime.Parse(dateEnd);
+                //string Sdate = FormatSdate.ToString("dd/MM/yyyy");
+                //string Edate = FormatEdate.ToString("dd/MM/yyyy");
+
+                //lsvSearch.Items.Clear();
+
+                string strconn = @"Data Source=192.168.1.77,1434;Initial Catalog=MONA110601;User Id=sa;Password=0211;";
+
+                string sql = "select docyear,count(docno) as qty, ";
+                sql += "CONVERT(varchar, CAST(sum(debtamount) AS money), 1) as net, CONVERT(varchar, CAST(sum(debtamount)/count(docno) AS money), 1) as avg ";
+                sql += "from (select year(docdate) as docyear,* from  cssaleorder as a ";
+                sql += "where a.CLOSEFLAG = 0 and a.docno like '%WS%' and (a.docno  like '5%' or a.docno  like '1%')) as a ";
+                sql += "group by docyear";
+
+                DataSet ds = cData.getDataSetWithQueryCommand(strconn, sql, 1000, true);
+
+                if (ds.Tables[0].Rows.Count <= 0)
+                {
+                    cMessage.ErrorNoData();
+                    return;
+                }
+
+                lsvSearch.addDataWithDataset(ds, true, false);
+            }
         }
 
         private void btnClose_Click(object sender, EventArgs e)

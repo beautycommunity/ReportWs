@@ -53,7 +53,7 @@
             this.btnClose});
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(1088, 39);
+            this.toolStrip2.Size = new System.Drawing.Size(816, 39);
             this.toolStrip2.TabIndex = 209;
             this.toolStrip2.Text = "toolStrip2";
             // 
@@ -63,7 +63,7 @@
             this.toolStripButton1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(91, 36);
+            this.toolStripButton1.Size = new System.Drawing.Size(80, 36);
             this.toolStripButton1.Text = "เงื่อนไข";
             this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
@@ -80,13 +80,13 @@
             this.mnuExportError.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.mnuExportError.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.mnuExportError.Name = "mnuExportError";
-            this.mnuExportError.Size = new System.Drawing.Size(133, 36);
+            this.mnuExportError.Size = new System.Drawing.Size(114, 36);
             this.mnuExportError.Text = "ส่งออกข้อมูล";
             // 
             // mnuExportExcel
             // 
             this.mnuExportExcel.Name = "mnuExportExcel";
-            this.mnuExportExcel.Size = new System.Drawing.Size(115, 26);
+            this.mnuExportExcel.Size = new System.Drawing.Size(102, 22);
             this.mnuExportExcel.Text = "Excel";
             this.mnuExportExcel.Click += new System.EventHandler(this.mnuExportExcel_Click);
             // 
@@ -101,7 +101,7 @@
             this.btnClose.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btnClose.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(111, 36);
+            this.btnClose.Size = new System.Drawing.Size(98, 36);
             this.btnClose.Text = "ปิดหน้าต่าง";
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
@@ -112,25 +112,24 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lsvSearch.FullRowSelect = true;
             this.lsvSearch.GridLines = true;
-            this.lsvSearch.Location = new System.Drawing.Point(17, 52);
-            this.lsvSearch.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.lsvSearch.Location = new System.Drawing.Point(13, 42);
+            this.lsvSearch.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.lsvSearch.Name = "lsvSearch";
             this.lsvSearch.Row = null;
-            this.lsvSearch.Size = new System.Drawing.Size(1052, 550);
+            this.lsvSearch.Size = new System.Drawing.Size(790, 448);
             this.lsvSearch.TabIndex = 212;
             this.lsvSearch.UseCompatibleStateImageBehavior = false;
             this.lsvSearch.View = System.Windows.Forms.View.Details;
             // 
             // WSDetail
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1088, 618);
+            this.ClientSize = new System.Drawing.Size(816, 502);
             this.Controls.Add(this.lsvSearch);
             this.Controls.Add(this.toolStrip2);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "WSDetail";
-            this.Text = "WSDetail";
+            this.Text = "รายงานแบบละเอียด";
             this.Load += new System.EventHandler(this.WSDetail_Load);
             this.toolStrip2.ResumeLayout(false);
             this.toolStrip2.PerformLayout();

@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -61,47 +62,55 @@ namespace ReportWS
 
         private void SearchPOS(string dateStart, string dateEnd)
         {
-            lsvSearch.Items.Clear();
-
-            string strconn = StrConn;
-
-            string sql = "WITH ANS AS ( ";
-            sql += "select stcode, stname, project, count(docno) as qty,sum(debtamount) as net , ";
-            sql += "sum(debtamount) / count(docno) as avg from( ";
-            if (Brand == "BB")
+            using (new cWaitIndicator())
             {
-                sql += @"select b.stcode, isnull(b.stname, '') as stname, a.docno, project, a.debtamount 
+                Thread.Sleep(100);
+
+                lsvSearch.Items.Clear();
+
+                string strconn = StrConn;
+
+                string sql = "WITH ANS AS ( ";
+                sql += "select stcode, stname, project, count(docno) as qty, ";
+                sql += "CONVERT(varchar, CAST(sum(debtamount) AS money), 1) AS NET, ";
+                sql += "CONVERT(varchar, CAST(sum(debtamount) / count(docno) AS money), 1) AS avg from( ";
+                if (Brand == "BB")
+                {
+                    sql += @"select b.stcode, isnull(b.stname, '') as stname, a.docno, project, a.debtamount 
                 from [192.168.1.77,1434].[MONA110601].dbo.cssaleorder a 
                 left join[dbbeautycommsupport].dbo.doc_st_wh b on a.DOCNO = b.docno 
                 where a.CLOSEFLAG = 0 
                 and a.docno like '%WS%'
                 and(a.docno  like '1%') 
-                AND A.DOCDATE BETWEEN '"+ dateStart + @"' AND '"+ dateEnd + "'";
-            }
-            else if(Brand == "BC")
-            {
-                sql += @"select b.stcode, isnull(b.stname, '') as stname, a.docno, project, a.debtamount 
+                and project = 'BB'
+                AND A.DOCDATE BETWEEN '" + dateStart + @"' AND '" + dateEnd + "'";
+                }
+                else if (Brand == "BC")
+                {
+                    sql += @"select b.stcode, isnull(b.stname, '') as stname, a.docno, project, a.debtamount 
                 from [192.168.1.77,1434].[MONA110601].dbo.cssaleorder a
                 left join [dbbeautycommsupport].dbo.doc_st_wh b on a.DOCNO = b.docno
                 where a.CLOSEFLAG = 0
                 and a.docno like '%WS%'
                 and(a.docno like '5%')
+                and project = 'BC'
                 AND A.DOCDATE BETWEEN '" + dateStart + @"' AND '" + dateEnd + "'";
-            }
+                }
 
-            sql += @") as a group by stcode,stname,project )        
+                sql += @") as a group by stcode,stname,project )        
             SELECT* FROM ANS
             order by project,stcode";
-            
-            DataSet ds = cData.getDataSetWithQueryCommand(strconn, sql, 1000, true);
 
-            if (ds.Tables[0].Rows.Count <= 0)
-            {
-                cMessage.ErrorNoData();
-                return;
+                DataSet ds = cData.getDataSetWithQueryCommand(strconn, sql, 1000, true);
+
+                if (ds.Tables[0].Rows.Count <= 0)
+                {
+                    cMessage.ErrorNoData();
+                    return;
+                }
+
+                lsvSearch.addDataWithDataset(ds, true, false);
             }
-
-            lsvSearch.addDataWithDataset(ds, true, false);
         }
 
         private void btnClose_Click(object sender, EventArgs e)

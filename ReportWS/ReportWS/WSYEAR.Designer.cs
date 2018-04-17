@@ -67,7 +67,7 @@
             // mnuExportExcel
             // 
             this.mnuExportExcel.Name = "mnuExportExcel";
-            this.mnuExportExcel.Size = new System.Drawing.Size(152, 22);
+            this.mnuExportExcel.Size = new System.Drawing.Size(102, 22);
             this.mnuExportExcel.Text = "Excel";
             this.mnuExportExcel.Click += new System.EventHandler(this.mnuExportExcel_Click);
             // 
@@ -110,7 +110,7 @@
             this.Controls.Add(this.lsvSearch);
             this.Controls.Add(this.toolStrip2);
             this.Name = "WSYEAR";
-            this.Text = "WSYEAR";
+            this.Text = "รายงานรายปี";
             this.Load += new System.EventHandler(this.WSYEAR_Load);
             this.toolStrip2.ResumeLayout(false);
             this.toolStrip2.PerformLayout();

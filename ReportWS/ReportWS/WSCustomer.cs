@@ -50,8 +50,8 @@ namespace ReportWS
             lsvSearch.Columns.Add("ชื่อสมาชิก", 100, HorizontalAlignment.Left);
             lsvSearch.Columns.Add("แบนด์", 90, HorizontalAlignment.Left);
             lsvSearch.Columns.Add("จำนวน", 80, HorizontalAlignment.Left);
-            lsvSearch.Columns.Add("ยอด", 160, HorizontalAlignment.Left);
-            lsvSearch.Columns.Add("ค่าเฉลี่ย", 60, HorizontalAlignment.Left);
+            lsvSearch.Columns.Add("ยอด", 100, HorizontalAlignment.Left);
+            lsvSearch.Columns.Add("ค่าเฉลี่ย", 100, HorizontalAlignment.Left);
         }
 
         private void SearchPOS(string dateStart, string dateEnd)
@@ -60,20 +60,20 @@ namespace ReportWS
 
             string strconn = StrConn;
 
-            string sql = @"select arcode,arname,project,count(docno) as qty,sum(debtamount) as net ,
-                            sum(debtamount) / count(docno) as avg
-                            from(
-                            select a.arcode, isnull(b.NAMETH, a.arname) as arname, docno, project, a.debtamount
-                            from [192.168.1.77,1434].[MONA110601].dbo.cssaleorder a
-                            left join [192.168.1.77,1434].[MONA110601].dbo.CSar b on a.arcode = b.code
-                            where a.CLOSEFLAG = 0
-                            and a.docno like '%WS%'
-                            and(a.docno  like '5%' or a.docno  like '1%')
-                            AND project = '"+ Brand + @"'
-                            AND a.DOCDATE BETWEEN '"+ dateEnd + @"' AND '"+ dateEnd + @"'
-                            ) as a
-                            group by arcode,arname,project
-                            order by project, arcode";
+            string sql = @"select arcode,arname,project,count(docno) as qty,CONVERT(varchar, CAST(sum(debtamount) AS money), 1) as net ,
+                         CONVERT(varchar, CAST(sum(debtamount)/count(docno) AS money), 1) as avg
+                         from (
+                         select a.arcode,isnull(b.NAMETH,a.arname) as arname,docno,project,a.debtamount from [192.168.1.77,1434].[MONA110601].dbo.cssaleorder a
+                         left join [192.168.1.77,1434].[MONA110601].dbo.CSar b on a.arcode = b.code
+                         where a.CLOSEFLAG = 0
+                         and a.docno like '%WS%'
+                         and (a.docno  like '5%' or a.docno  like '1%') ";
+            sql += "AND project = '" + Brand + "' ";
+            sql += "AND a.DOCDATE BETWEEN '" + dateStart + "' AND '" + dateEnd + "' ";
+                         sql += @") as a
+                         group by arcode,arname,project
+                         order by project,arcode";
+
             DataSet ds = cData.getDataSetWithQueryCommand(strconn, sql, 1000, true);
 
             if (ds.Tables[0].Rows.Count <= 0)

@@ -109,7 +109,6 @@
             this.Controls.Add(this.kbTabControl1);
             this.Margin = new System.Windows.Forms.Padding(4, 8, 4, 8);
             this.Name = "frmSearchDialog";
-            this.Text = "frmSearchDialog";
             this.Controls.SetChildIndex(this.kbTabControl1, 0);
             this.kbTabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
