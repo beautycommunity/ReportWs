@@ -54,6 +54,12 @@
     <Compile Include="frmBrandDialog.Designer.cs">
       <DependentUpon>frmBrandDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmProduct.Designer.cs">
+      <DependentUpon>frmProduct.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmRPTByMonth.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -65,6 +71,18 @@
     </Compile>
     <Compile Include="frmRPTByMonthCond.Designer.cs">
       <DependentUpon>frmRPTByMonthCond.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRPTByProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRPTByProduct.Designer.cs">
+      <DependentUpon>frmRPTByProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRPTByProductCond.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRPTByProductCond.Designer.cs">
+      <DependentUpon>frmRPTByProductCond.cs</DependentUpon>
     </Compile>
     <Compile Include="frmSearchDialog.cs">
       <SubType>Form</SubType>
@@ -113,11 +131,20 @@
     <EmbeddedResource Include="frmBrandDialog.resx">
       <DependentUpon>frmBrandDialog.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmProduct.resx">
+      <DependentUpon>frmProduct.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmRPTByMonth.resx">
       <DependentUpon>frmRPTByMonth.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmRPTByMonthCond.resx">
       <DependentUpon>frmRPTByMonthCond.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRPTByProduct.resx">
+      <DependentUpon>frmRPTByProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRPTByProductCond.resx">
+      <DependentUpon>frmRPTByProductCond.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSearchDialog.resx">
       <DependentUpon>frmSearchDialog.cs</DependentUpon>

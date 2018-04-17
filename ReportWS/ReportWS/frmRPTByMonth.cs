@@ -18,6 +18,7 @@ namespace ReportWS
         string Brand;
         TextBox txtSql = new TextBox();
         TextBox txtBl = new TextBox();
+        kbListView lsv = new kbListView();
 
         string sql;
 
@@ -32,6 +33,7 @@ namespace ReportWS
         {
             InitializeComponent();
             StrConn = _strconn;
+            Brand = _brand;
         }
 
 
@@ -44,7 +46,7 @@ namespace ReportWS
         {
             try
             {
-               
+                
 
                 frmRPTByMonthCond frm = new frmRPTByMonthCond(StrConn, Brand,ref txtSql,ref txtBl);
                 frm.ShowDialog();
@@ -59,6 +61,7 @@ namespace ReportWS
 
                         ds = cData.getDataSetWithQueryCommand(StrConn, sql, 1000000, true);
 
+                      
                         lv.Items.Clear();
 
                         ListViewItem LvItm = new ListViewItem();
@@ -70,14 +73,14 @@ namespace ReportWS
 
                             lv.Items[idx].SubItems.Add(ds.Tables[0].Rows[cnt]["docyear"].ToString());
                             lv.Items[idx].SubItems.Add(ds.Tables[0].Rows[cnt]["docmonth"].ToString());
-                            lv.Items[idx].SubItems.Add(ds.Tables[0].Rows[cnt]["qty"].ToString());
-                            lv.Items[idx].SubItems.Add(ds.Tables[0].Rows[cnt]["net"].ToString());
-                            lv.Items[idx].SubItems.Add(ds.Tables[0].Rows[cnt]["avg"].ToString());
-                            lv.Items[idx].SubItems.Add(ds.Tables[0].Rows[cnt]["cnt"].ToString());
+                            lv.Items[idx].SubItems.Add(decimal.Parse(ds.Tables[0].Rows[cnt]["qty"].ToString()).ToString("#,##0"));
+                            lv.Items[idx].SubItems.Add(decimal.Parse(ds.Tables[0].Rows[cnt]["net"].ToString()).ToString("#,##0"));
+                            lv.Items[idx].SubItems.Add(decimal.Parse(ds.Tables[0].Rows[cnt]["avg"].ToString()).ToString("#,##0"));
+                            lv.Items[idx].SubItems.Add(decimal.Parse(ds.Tables[0].Rows[cnt]["cnt"].ToString()).ToString("#,##0"));
 
                         }
 
-                       
+                        lsv.addDataWithDataset(ds, true, true);
 
                     }
                     MessageBox.Show("ดึงข้อมูลสำเร็จ");
@@ -89,6 +92,15 @@ namespace ReportWS
             }
         }
 
-       
+        private void tsmCSV_Click(object sender, EventArgs e)
+        {
+            lsv.ExportToCsv(true, "");  
+          
+        }
+
+        private void tsmExcel_Click(object sender, EventArgs e)
+        {
+            lsv.ExportToExcel();
+        }
     }
 }
