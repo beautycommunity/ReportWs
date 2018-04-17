@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -56,11 +57,14 @@ namespace ReportWS
 
         private void SearchPOS(string dateStart, string dateEnd)
         {
-            lsvSearch.Items.Clear();
+            using (new cWaitIndicator())
+            {
+                Thread.Sleep(100);
+                lsvSearch.Items.Clear();
 
-            string strconn = StrConn;
+                string strconn = StrConn;
 
-            string sql = @"select arcode,arname,project,count(docno) as qty,CONVERT(varchar, CAST(sum(debtamount) AS money), 1) as net ,
+                string sql = @"select arcode,arname,project,count(docno) as qty,CONVERT(varchar, CAST(sum(debtamount) AS money), 1) as net ,
                          CONVERT(varchar, CAST(sum(debtamount)/count(docno) AS money), 1) as avg
                          from (
                          select a.arcode,isnull(b.NAMETH,a.arname) as arname,docno,project,a.debtamount from [192.168.1.77,1434].[MONA110601].dbo.cssaleorder a
@@ -68,21 +72,22 @@ namespace ReportWS
                          where a.CLOSEFLAG = 0
                          and a.docno like '%WS%'
                          and (a.docno  like '5%' or a.docno  like '1%') ";
-            sql += "AND project = '" + Brand + "' ";
-            sql += "AND a.DOCDATE BETWEEN '" + dateStart + "' AND '" + dateEnd + "' ";
-                         sql += @") as a
+                sql += "AND project = '" + Brand + "' ";
+                sql += "AND a.DOCDATE BETWEEN '" + dateStart + "' AND '" + dateEnd + "' ";
+                sql += @") as a
                          group by arcode,arname,project
                          order by project,arcode";
 
-            DataSet ds = cData.getDataSetWithQueryCommand(strconn, sql, 1000, true);
+                DataSet ds = cData.getDataSetWithQueryCommand(strconn, sql, 1000, true);
 
-            if (ds.Tables[0].Rows.Count <= 0)
-            {
-                cMessage.ErrorNoData();
-                return;
+                if (ds.Tables[0].Rows.Count <= 0)
+                {
+                    cMessage.ErrorNoData();
+                    return;
+                }
+
+                lsvSearch.addDataWithDataset(ds, true, false);
             }
-
-            lsvSearch.addDataWithDataset(ds, true, false);
         }
 
         private void WSEmployee_Load(object sender, EventArgs e)

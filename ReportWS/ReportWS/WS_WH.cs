@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -61,32 +62,37 @@ namespace ReportWS
 
         private void SearchPOS(string dateStart, string dateEnd)
         {
-            lsvSearch.Items.Clear();
+            using (new cWaitIndicator())
+            {
+                Thread.Sleep(100);
 
-            string strconn = StrConn;
+                lsvSearch.Items.Clear();
 
-            string sql = @"select whcode,whname,PROJECT ,count(docno) as qty ,CONVERT(varchar, CAST(sum(debtamount) AS money), 1) as net from (
+                string strconn = StrConn;
+
+                string sql = @"select whcode,whname,PROJECT ,count(docno) as qty ,CONVERT(varchar, CAST(sum(debtamount) AS money), 1) as net from (
                          select substring(a.DOCNO,1,4) as whcode,b.MYNAMETH as whname,a.PROJECT  ,docno ,debtamount
                          from [192.168.1.77,1434].[MONA110601].dbo.cssaleorder a
                          left join [192.168.1.77,1434].[MONA110601].dbo.cswarehouse b on substring(a.DOCNO,1,4) = b.code
                          where a.CLOSEFLAG = 0
                          and a.docno like '%WS%'
                          and (a.docno like '5%' or a.docno like '1%')
-                         AND A.DOCDATE BETWEEN '" + dateStart + @"' AND '"+ dateEnd + @"'
-                         AND A.PROJECT = '"+ Brand + @"'
+                         AND A.DOCDATE BETWEEN '" + dateStart + @"' AND '" + dateEnd + @"'
+                         AND A.PROJECT = '" + Brand + @"'
                          ) as a
                          group by whcode, whname, PROJECT
                          order by PROJECT ,whcode";
 
-            DataSet ds = cData.getDataSetWithQueryCommand(strconn, sql, 1000, true);
+                DataSet ds = cData.getDataSetWithQueryCommand(strconn, sql, 1000, true);
 
-            if (ds.Tables[0].Rows.Count <= 0)
-            {
-                cMessage.ErrorNoData();
-                return;
+                if (ds.Tables[0].Rows.Count <= 0)
+                {
+                    cMessage.ErrorNoData();
+                    return;
+                }
+
+                lsvSearch.addDataWithDataset(ds, true, false);
             }
-
-            lsvSearch.addDataWithDataset(ds, true, false);
         }
 
         private void btnClose_Click(object sender, EventArgs e)
