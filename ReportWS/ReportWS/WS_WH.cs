@@ -33,12 +33,12 @@ namespace ReportWS
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
-            frmSearchDialog frm = new frmSearchDialog();
+            frmSearchDialog_WH frm = new frmSearchDialog_WH(StrConn, Brand);
             frm.ShowDialog();
 
             if (frm.closedOK)
             {
-                SearchPOS(frm.dateStart, frm.dateEnd);
+                SearchPOS(frm.dateStart, frm.dateEnd, frm.txtwhcode);
             }
         }
 
@@ -60,10 +60,8 @@ namespace ReportWS
             lsvSearch.Columns.Add("ยอด", 160, HorizontalAlignment.Right);
         }
 
-        private void SearchPOS(string dateStart, string dateEnd)
+        private void SearchPOS(string dateStart, string dateEnd, string txt)
         {
-            try
-            {
                 using (new cWaitIndicator())
                 {
                     Thread.Sleep(100);
@@ -81,8 +79,12 @@ namespace ReportWS
                          and (a.docno like '5%' or a.docno like '1%')
                          AND A.DOCDATE BETWEEN '" + dateStart + @"' AND '" + dateEnd + @"'
                          AND A.PROJECT = '" + Brand + @"'
-                         ) as a
-                         group by whcode, whname, PROJECT
+                         ) as a ";
+                    if (txt != null)
+                    {
+                        sql += "WHERE whcode IN ('"+ txt + "') ";
+                    }
+                         sql += @"group by whcode, whname, PROJECT
                          order by PROJECT ,whcode";
 
                     DataSet ds = cData.getDataSetWithQueryCommand(strconn, sql, 1000, true);
@@ -95,12 +97,7 @@ namespace ReportWS
 
                     lsvSearch.addDataWithDataset(ds, true, false);
 
-                }
-            }
-            catch 
-            {
-
-            }
+                }         
         }
 
         private void btnClose_Click(object sender, EventArgs e)

@@ -55,9 +55,10 @@
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 39);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(520, 506);
+            this.tabControl1.Size = new System.Drawing.Size(377, 294);
             this.tabControl1.TabIndex = 195;
             // 
             // tabPage1
@@ -66,10 +67,11 @@
             this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Controls.Add(this.dtpF);
             this.tabPage1.Controls.Add(this.dtpS);
-            this.tabPage1.Location = new System.Drawing.Point(4, 30);
+            this.tabPage1.Location = new System.Drawing.Point(4, 26);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(495, 472);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabPage1.Size = new System.Drawing.Size(369, 264);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "วันที่";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -77,45 +79,48 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(56, 106);
+            this.label2.Location = new System.Drawing.Point(50, 86);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(63, 21);
+            this.label2.Size = new System.Drawing.Size(53, 17);
             this.label2.TabIndex = 3;
             this.label2.Text = "ถึง วันที่";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(79, 43);
+            this.label1.Location = new System.Drawing.Point(70, 35);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(40, 21);
+            this.label1.Size = new System.Drawing.Size(34, 17);
             this.label1.TabIndex = 2;
             this.label1.Text = "วันที่";
             // 
             // dtpF
             // 
             this.dtpF.DisplayThai = true;
-            this.dtpF.Location = new System.Drawing.Point(125, 99);
+            this.dtpF.Location = new System.Drawing.Point(111, 80);
+            this.dtpF.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtpF.Name = "dtpF";
-            this.dtpF.Size = new System.Drawing.Size(179, 28);
+            this.dtpF.Size = new System.Drawing.Size(160, 24);
             this.dtpF.TabIndex = 1;
             // 
             // dtpS
             // 
             this.dtpS.DisplayThai = true;
-            this.dtpS.Location = new System.Drawing.Point(125, 37);
+            this.dtpS.Location = new System.Drawing.Point(111, 30);
+            this.dtpS.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtpS.Name = "dtpS";
-            this.dtpS.Size = new System.Drawing.Size(179, 28);
+            this.dtpS.Size = new System.Drawing.Size(160, 24);
             this.dtpS.TabIndex = 0;
             // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.lv);
             this.tabPage2.Controls.Add(this.groupBox1);
-            this.tabPage2.Location = new System.Drawing.Point(4, 30);
+            this.tabPage2.Location = new System.Drawing.Point(4, 26);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(512, 472);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabPage2.Size = new System.Drawing.Size(454, 372);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "สินค้า";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -129,9 +134,10 @@
             this.lv.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.lv.FullRowSelect = true;
             this.lv.GridLines = true;
-            this.lv.Location = new System.Drawing.Point(3, 56);
+            this.lv.Location = new System.Drawing.Point(3, 45);
+            this.lv.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lv.Name = "lv";
-            this.lv.Size = new System.Drawing.Size(506, 413);
+            this.lv.Size = new System.Drawing.Size(448, 325);
             this.lv.TabIndex = 0;
             this.lv.UseCompatibleStateImageBehavior = false;
             this.lv.View = System.Windows.Forms.View.Details;
@@ -152,17 +158,20 @@
             this.groupBox1.Controls.Add(this.btndell);
             this.groupBox1.Controls.Add(this.btnadd);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox1.Location = new System.Drawing.Point(3, 3);
+            this.groupBox1.Location = new System.Drawing.Point(3, 2);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(506, 53);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox1.Size = new System.Drawing.Size(448, 43);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             // 
             // btndellAll
             // 
-            this.btndellAll.Location = new System.Drawing.Point(447, 13);
+            this.btndellAll.Location = new System.Drawing.Point(397, 11);
+            this.btndellAll.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btndellAll.Name = "btndellAll";
-            this.btndellAll.Size = new System.Drawing.Size(36, 34);
+            this.btndellAll.Size = new System.Drawing.Size(32, 28);
             this.btndellAll.TabIndex = 2;
             this.btndellAll.Text = "--";
             this.btndellAll.UseVisualStyleBackColor = true;
@@ -170,9 +179,10 @@
             // 
             // btndell
             // 
-            this.btndell.Location = new System.Drawing.Point(412, 13);
+            this.btndell.Location = new System.Drawing.Point(366, 11);
+            this.btndell.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btndell.Name = "btndell";
-            this.btndell.Size = new System.Drawing.Size(29, 34);
+            this.btndell.Size = new System.Drawing.Size(26, 28);
             this.btndell.TabIndex = 1;
             this.btndell.Text = "-";
             this.btndell.UseVisualStyleBackColor = true;
@@ -180,9 +190,10 @@
             // 
             // btnadd
             // 
-            this.btnadd.Location = new System.Drawing.Point(377, 13);
+            this.btnadd.Location = new System.Drawing.Point(335, 11);
+            this.btnadd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnadd.Name = "btnadd";
-            this.btnadd.Size = new System.Drawing.Size(29, 34);
+            this.btnadd.Size = new System.Drawing.Size(26, 28);
             this.btnadd.TabIndex = 0;
             this.btnadd.Text = "+";
             this.btnadd.UseVisualStyleBackColor = true;
@@ -190,11 +201,11 @@
             // 
             // frmRPTByProductCond
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(520, 545);
+            this.ClientSize = new System.Drawing.Size(377, 333);
             this.Controls.Add(this.tabControl1);
-            this.Margin = new System.Windows.Forms.Padding(3, 9, 3, 9);
+            this.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
             this.Name = "frmRPTByProductCond";
             this.Controls.SetChildIndex(this.tabControl1, 0);
             this.tabControl1.ResumeLayout(false);

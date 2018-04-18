@@ -33,12 +33,12 @@ namespace ReportWS
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
-            frmSearchDialog frm = new frmSearchDialog();
+            frmSearchDialog_CUS frm = new frmSearchDialog_CUS(StrConn, Brand);
             frm.ShowDialog();
 
             if (frm.closedOK)
             {
-                SearchPOS(frm.dateStart, frm.dateEnd);
+                SearchPOS(frm.dateStart, frm.dateEnd, frm.txtwhcode);
             }
         }
 
@@ -55,7 +55,7 @@ namespace ReportWS
             lsvSearch.Columns.Add("ค่าเฉลี่ย", 100, HorizontalAlignment.Right);
         }
 
-        private void SearchPOS(string dateStart, string dateEnd)
+        private void SearchPOS(string dateStart, string dateEnd, string txt)
         {
             using (new cWaitIndicator())
             {
@@ -74,6 +74,10 @@ namespace ReportWS
                          and (a.docno  like '5%' or a.docno  like '1%') ";
                 sql += "AND project = '" + Brand + "' ";
                 sql += "AND a.DOCDATE BETWEEN '" + dateStart + "' AND '" + dateEnd + "' ";
+                if (txt != null)
+                {
+                    sql += "and arcode IN ('"+ txt + "') ";
+                }
                 sql += @") as a
                          group by arcode,arname,project
                          order by project,arcode";

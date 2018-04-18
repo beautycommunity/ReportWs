@@ -33,12 +33,12 @@ namespace ReportWS
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
-            frmSearchDialog frm = new frmSearchDialog();
+            frmSearchDialog_EMP frm = new frmSearchDialog_EMP(StrConn, Brand);
             frm.ShowDialog();
 
             if (frm.closedOK)
             {
-                SearchPOS(frm.dateStart, frm.dateEnd);
+                SearchPOS(frm.dateStart, frm.dateEnd, frm.txtwhcode);
             }
         }
 
@@ -60,12 +60,11 @@ namespace ReportWS
             lsvSearch.Columns.Add("ค่าเฉลี่ย", 100, HorizontalAlignment.Right);
         }
 
-        private void SearchPOS(string dateStart, string dateEnd)
+        private void SearchPOS(string dateStart, string dateEnd, string txt)
         {
             using (new cWaitIndicator())
             {
                 Thread.Sleep(100);
-
                 lsvSearch.Items.Clear();
 
                 string strconn = StrConn;
@@ -98,8 +97,12 @@ namespace ReportWS
                 }
 
                 sql += @") as a group by stcode,stname,project )        
-            SELECT* FROM ANS
-            order by project,stcode";
+                SELECT* FROM ANS ";
+                if(txt != null)
+                {
+                    sql += "WHERE stcode IN ('"+ txt + "') ";
+                }
+                sql += "order by project,stcode";
 
                 DataSet ds = cData.getDataSetWithQueryCommand(strconn, sql, 1000, true);
 
@@ -109,7 +112,7 @@ namespace ReportWS
                     //return;
                 }
 
-                lsvSearch.addDataWithDataset(ds, true, false);
+                lsvSearch.addDataWithDataset(ds, true, true);
             }
         }
 

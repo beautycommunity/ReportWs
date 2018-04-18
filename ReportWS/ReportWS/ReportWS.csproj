@@ -32,11 +32,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="kBeautyContext">
+      <HintPath>F:\Beauty\kBeautyContext\bin\Debug\kBeautyContext.dll</HintPath>
+    </Reference>
     <Reference Include="kBeautyLibrary">
       <HintPath>..\..\..\..\..\..\..\project\DLL\kBeautyLibrary.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -83,6 +87,24 @@
     </Compile>
     <Compile Include="frmRPTByProductCond.Designer.cs">
       <DependentUpon>frmRPTByProductCond.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSearchDialog_WH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSearchDialog_WH.Designer.cs">
+      <DependentUpon>frmSearchDialog_WH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSearchDialog_CUS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSearchDialog_CUS.Designer.cs">
+      <DependentUpon>frmSearchDialog_CUS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSearchDialog_EMP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSearchDialog_EMP.Designer.cs">
+      <DependentUpon>frmSearchDialog_EMP.cs</DependentUpon>
     </Compile>
     <Compile Include="frmSearchDialog.cs">
       <SubType>Form</SubType>
@@ -145,6 +167,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmRPTByProductCond.resx">
       <DependentUpon>frmRPTByProductCond.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSearchDialog_WH.resx">
+      <DependentUpon>frmSearchDialog_WH.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSearchDialog_CUS.resx">
+      <DependentUpon>frmSearchDialog_CUS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSearchDialog_EMP.resx">
+      <DependentUpon>frmSearchDialog_EMP.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSearchDialog.resx">
       <DependentUpon>frmSearchDialog.cs</DependentUpon>
