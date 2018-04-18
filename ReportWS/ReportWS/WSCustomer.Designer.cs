@@ -129,7 +129,7 @@
             this.Controls.Add(this.lsvSearch);
             this.Controls.Add(this.toolStrip2);
             this.Name = "WSCustomer";
-            this.Text = "รายงานตามพนักงาน";
+            this.Text = "รายงานตามลูกค้า";
             this.Load += new System.EventHandler(this.WSEmployee_Load);
             this.toolStrip2.ResumeLayout(false);
             this.toolStrip2.PerformLayout();

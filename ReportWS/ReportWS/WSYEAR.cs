@@ -43,9 +43,9 @@ namespace ReportWS
             // Add Columns     
             lsvSearch.Columns.Add("ลำดับ", 50, HorizontalAlignment.Left);
             lsvSearch.Columns.Add("ปี", 50, HorizontalAlignment.Left);
-            lsvSearch.Columns.Add("จำนวน", 50, HorizontalAlignment.Left);
-            lsvSearch.Columns.Add("ยอด", 150, HorizontalAlignment.Left);
-            lsvSearch.Columns.Add("ค่าเฉลี่ย", 150, HorizontalAlignment.Left);
+            lsvSearch.Columns.Add("จำนวน", 50, HorizontalAlignment.Right);
+            lsvSearch.Columns.Add("ยอด", 150, HorizontalAlignment.Right);
+            lsvSearch.Columns.Add("ค่าเฉลี่ย", 150, HorizontalAlignment.Right);
         }
 
         private void SearchPOS()
@@ -63,11 +63,11 @@ namespace ReportWS
 
                 //lsvSearch.Items.Clear();
 
-                string strconn = @"Data Source=192.168.1.77,1434;Initial Catalog=MONA110601;User Id=sa;Password=0211;";
+                string strconn = StrConn;
 
                 string sql = "select docyear,REPLACE(CONVERT(varchar(20),(CAST(count(docno) AS money)), 1), '.00', '') as qty, ";
                 sql += "CONVERT(varchar, CAST(sum(debtamount) AS money), 1) as net, CONVERT(varchar, CAST(sum(debtamount)/count(docno) AS money), 1) as avg ";
-                sql += "from (select year(docdate) as docyear,* from  cssaleorder as a ";
+                sql += "from (select year(docdate) as docyear,* from [192.168.1.77,1434].[MONA110601].dbo.cssaleorder as a ";
                 sql += "where a.CLOSEFLAG = 0 and a.docno like '%WS%' and (a.docno  like '5%' or a.docno  like '1%')) as a ";
                 sql += "group by docyear";
 
