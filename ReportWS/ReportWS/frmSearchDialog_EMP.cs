@@ -80,16 +80,40 @@ namespace ReportWS
 
             string strconn = StrConn;
 
-            string sql = @"WITH ANS AS ( select stcode, stname, project, count(docno) as qty, CONVERT(varchar, CAST(sum(debtamount) AS money), 1) AS NET, CONVERT(varchar, CAST(sum(debtamount) / count(docno) AS money), 1) AS avg from( select b.stcode, isnull(b.stname, '') as stname, a.docno, project, a.debtamount 
-                from [192.168.1.77,1434].[MONA110601].dbo.cssaleorder a
-                left join[dbbeautycommsupport].dbo.doc_st_wh b on a.DOCNO = b.docno
-                where a.CLOSEFLAG = 0
-                and a.docno like '%WS%'
-                and(a.docno like '5%')
-                and project = '"+ Brand + @"'
-				) as a group by stcode,stname,project )        
-                SELECT stcode,stname FROM ANS
-                order by project,stcode";
+            string sql = @"select stcode,stname
+                           from (
+                           select b.stcode,isnull(b.stname,'') as stname,a.docno,project,a.debtamount 
+                           from [192.168.1.77,1434].[MONA110601].dbo.cssaleorder a ";
+            if (Brand == "BC")
+            {
+                sql += "left join [192.168.1.220].[dbbeautycommsupport].dbo.doc_st_wh b on a.DOCNO = b.docno ";
+            }
+            else if(Brand == "BB")
+            {
+                sql += "left join [dbbeautycommsupport].dbo.doc_st_wh b on a.DOCNO = b.docno ";
+            }
+            sql += @"where a.CLOSEFLAG = 0
+                           and a.docno like '%WS%'
+                           and (a.docno  like '1%')
+                           union all
+                           select b.stcode,isnull(b.stname,'') as stname,a.docno,project,a.debtamount 
+                           from [192.168.1.77,1434].[MONA110601].dbo.cssaleorder a ";
+            if (Brand == "BC")
+            {
+                sql += "left join [dbbeautycommsupport].dbo.doc_st_wh b on a.DOCNO = b.docno  ";
+            }
+            else if (Brand == "BB")
+            {
+                sql += "left join [192.168.1.24,1833].[dbbeautycommsupport].dbo.doc_st_wh b on a.DOCNO = b.docno  ";
+            }
+
+                           sql += @"where a.CLOSEFLAG = 0
+                           and a.docno like '%WS%'
+                           and (a.docno  like '5%')
+                           ) as a
+                           WHERE project = '"+ Brand + @"'
+                           group by stcode,stname,project
+                           order by project,stcode";
 
             DataSet ds = cData.getDataSetWithQueryCommand(strconn, sql, 1000, true);
 
@@ -118,6 +142,60 @@ namespace ReportWS
             }
 
             bl = !bl;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string key = textBox.Text;
+            lsvProducts2.Items.Clear();
+
+            string strconn = StrConn;
+
+            string sql = @"select stcode,stname
+                           from (
+                           select b.stcode,isnull(b.stname,'') as stname,a.docno,project,a.debtamount 
+                           from [192.168.1.77,1434].[MONA110601].dbo.cssaleorder a ";
+            if (Brand == "BC")
+            {
+                sql += "left join [192.168.1.220].[dbbeautycommsupport].dbo.doc_st_wh b on a.DOCNO = b.docno ";
+            }
+            else if (Brand == "BB")
+            {
+                sql += "left join [dbbeautycommsupport].dbo.doc_st_wh b on a.DOCNO = b.docno ";
+            }
+            sql += @"where a.CLOSEFLAG = 0
+                           and a.docno like '%WS%'
+                           and (a.docno  like '1%')
+                           union all
+                           select b.stcode,isnull(b.stname,'') as stname,a.docno,project,a.debtamount 
+                           from [192.168.1.77,1434].[MONA110601].dbo.cssaleorder a ";
+            if (Brand == "BC")
+            {
+                sql += "left join [dbbeautycommsupport].dbo.doc_st_wh b on a.DOCNO = b.docno  ";
+            }
+            else if (Brand == "BB")
+            {
+                sql += "left join [192.168.1.24,1833].[dbbeautycommsupport].dbo.doc_st_wh b on a.DOCNO = b.docno  ";
+            }
+
+            sql += @"where a.CLOSEFLAG = 0
+                           and a.docno like '%WS%'
+                           and (a.docno  like '5%')
+                           ) as a
+                           WHERE project = '" + Brand + @"'
+                           AND (stcode LIKE '%"+ key + @"%' or stname LIKE '%"+ key + @"%')
+                           group by stcode,stname,project
+                           order by project,stcode";
+
+            DataSet ds = cData.getDataSetWithQueryCommand(strconn, sql, 1000, true);
+
+            if (ds.Tables[0].Rows.Count <= 0)
+            {
+                cMessage.ErrorNoData();
+                //return;
+            }
+
+            lsvProducts2.addDataWithDataset(ds, false, false);
         }
     }
 }

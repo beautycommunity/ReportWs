@@ -105,8 +105,8 @@ namespace ReportWS
         {
             lsvProducts2.LabelWrap = true;
             // Add Columns     
-            lsvProducts2.Columns.Add("รหัสพนักงาน",100, HorizontalAlignment.Left);
-            lsvProducts2.Columns.Add("ชื่อพนักงาน", 200, HorizontalAlignment.Left);
+            lsvProducts2.Columns.Add("รหัสลูกค้า",100, HorizontalAlignment.Left);
+            lsvProducts2.Columns.Add("ชื่อลูกค้า", 200, HorizontalAlignment.Left);
         }
 
         private void lbl_all_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -117,6 +117,35 @@ namespace ReportWS
             }
 
             bl = !bl;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string key = textBox.Text;
+            lsvProducts2.Items.Clear();
+
+            string strconn = StrConn;
+
+            string sql = @"select arcode,arname
+                         from (
+                         select a.arcode,isnull(b.NAMETH,a.arname) as arname,docno,project,a.debtamount from [192.168.1.77,1434].[MONA110601].dbo.cssaleorder a
+                         left join [192.168.1.77,1434].[MONA110601].dbo.CSar b on a.arcode = b.code
+                         where a.CLOSEFLAG = 0
+                         and a.docno like '%WS%'
+                         and (a.docno  like '5%' or a.docno  like '1%') AND project = '" + Brand + @"' ) as a
+                         WHERE (arcode LIKE '%" + key + @"%' or arname LIKE '%" + key + @"%')
+                         group by arcode,arname,project
+                         order by project,arcode";
+
+            DataSet ds = cData.getDataSetWithQueryCommand(strconn, sql, 1000, true);
+
+            if (ds.Tables[0].Rows.Count <= 0)
+            {
+                cMessage.ErrorNoData();
+                //return;
+            }
+
+            lsvProducts2.addDataWithDataset(ds, false, false);
         }
     }
 }

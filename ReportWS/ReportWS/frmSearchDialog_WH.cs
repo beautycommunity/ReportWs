@@ -107,8 +107,8 @@ namespace ReportWS
         {
             lsvProducts2.LabelWrap = true;
             // Add Columns     
-            lsvProducts2.Columns.Add("รหัสพนักงาน",100, HorizontalAlignment.Left);
-            lsvProducts2.Columns.Add("ชื่อพนักงาน", 200, HorizontalAlignment.Left);
+            lsvProducts2.Columns.Add("รหัสสาขา",100, HorizontalAlignment.Left);
+            lsvProducts2.Columns.Add("ชื่อสาขา", 200, HorizontalAlignment.Left);
         }
 
         private void lbl_all_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -119,6 +119,37 @@ namespace ReportWS
             }
 
             bl = !bl;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string key = textBox.Text;
+            lsvProducts2.Items.Clear();
+
+            string strconn = StrConn;
+
+            string sql = @"select whcode,whname from (
+                         select substring(a.DOCNO,1,4) as whcode,b.MYNAMETH as whname,a.PROJECT  ,docno ,debtamount
+                         from [192.168.1.77,1434].[MONA110601].dbo.cssaleorder a
+                         left join [192.168.1.77,1434].[MONA110601].dbo.cswarehouse b on substring(a.DOCNO,1,4) = b.code
+                         where a.CLOSEFLAG = 0
+                         and a.docno like '%WS%'
+                         and (a.docno like '5%' or a.docno like '1%')
+                         AND A.PROJECT = '" + Brand + @"'
+                         ) as a 
+                         WHERE (whcode LIKE '%" + key + @"%' or whname LIKE '%" + key + @"%')
+                         group by whcode, whname, PROJECT
+                         order by PROJECT ,whcode";
+
+            DataSet ds = cData.getDataSetWithQueryCommand(strconn, sql, 1000, true);
+
+            if (ds.Tables[0].Rows.Count <= 0)
+            {
+                cMessage.ErrorNoData();
+                //return;
+            }
+
+            lsvProducts2.addDataWithDataset(ds, false, false);
         }
     }
 }

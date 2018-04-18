@@ -44,6 +44,8 @@
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.lbl_all = new System.Windows.Forms.LinkLabel();
             this.lsvProducts2 = new kBeautyLibrary.kbListView(this.components);
+            this.textBox = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.kbTabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.kbTabControl2.SuspendLayout();
@@ -178,6 +180,8 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.button1);
+            this.tabPage3.Controls.Add(this.textBox);
             this.tabPage3.Controls.Add(this.lbl_all);
             this.tabPage3.Controls.Add(this.lsvProducts2);
             this.tabPage3.Location = new System.Drawing.Point(4, 26);
@@ -215,6 +219,23 @@
             this.lsvProducts2.TabIndex = 4;
             this.lsvProducts2.UseCompatibleStateImageBehavior = false;
             this.lsvProducts2.View = System.Windows.Forms.View.Details;
+            // 
+            // textBox
+            // 
+            this.textBox.Location = new System.Drawing.Point(8, 11);
+            this.textBox.Name = "textBox";
+            this.textBox.Size = new System.Drawing.Size(159, 24);
+            this.textBox.TabIndex = 7;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(173, 10);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(77, 24);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "ค้นหา";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // frmSearchDialog_CUS
             // 
@@ -258,5 +279,7 @@
         private System.Windows.Forms.TabPage tabPage3;
         private kBeautyLibrary.kbListView lsvProducts2;
         private System.Windows.Forms.LinkLabel lbl_all;
+        private System.Windows.Forms.TextBox textBox;
+        private System.Windows.Forms.Button button1;
     }
 }
