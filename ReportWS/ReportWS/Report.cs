@@ -19,31 +19,31 @@ namespace ReportWS
 
         private void mnuOffline_Click(object sender, EventArgs e)
         {
-            WSDetail frm_Detail = new WSDetail();
+            frmRPTByDetail frm_Detail = new frmRPTByDetail();
             frm_Detail.ShowDialog();
         }
 
         private void รายงานรายปToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            WSYEAR frm_Year = new WSYEAR();
+            frmRPTByYEAR frm_Year = new frmRPTByYEAR();
             frm_Year.ShowDialog();
         }
 
         private void รายงานตามลกคาToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            WSCustomer frm_Cus = new WSCustomer();
+            frmRPTByCustomer frm_Cus = new frmRPTByCustomer();
             frm_Cus.ShowDialog();
         }
 
         private void รายงานตามพนกงานToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            WSEmployee frm_Emp = new WSEmployee();
+            frmRPTByEmployee frm_Emp = new frmRPTByEmployee();
             frm_Emp.ShowDialog();
         }
 
         private void รายงานตามสาขาToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            WS_WH frm_WH = new WS_WH();
+            frmRPTByWH frm_WH = new frmRPTByWH();
             frm_WH.ShowDialog();
         }
     }

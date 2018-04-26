@@ -1,6 +1,6 @@
 ﻿namespace ReportWS
 {
-    partial class WSEmployee
+    partial class frmRPTByWH
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WSEmployee));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmRPTByWH));
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
@@ -53,7 +53,7 @@
             this.btnClose});
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(646, 39);
+            this.toolStrip2.Size = new System.Drawing.Size(722, 39);
             this.toolStrip2.TabIndex = 211;
             this.toolStrip2.Text = "toolStrip2";
             // 
@@ -116,21 +116,21 @@
             this.lsvSearch.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.lsvSearch.Name = "lsvSearch";
             this.lsvSearch.Row = null;
-            this.lsvSearch.Size = new System.Drawing.Size(620, 347);
+            this.lsvSearch.Size = new System.Drawing.Size(696, 365);
             this.lsvSearch.TabIndex = 214;
             this.lsvSearch.UseCompatibleStateImageBehavior = false;
             this.lsvSearch.View = System.Windows.Forms.View.Details;
             // 
-            // WSEmployee
+            // WS_WH
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(646, 401);
+            this.ClientSize = new System.Drawing.Size(722, 419);
             this.Controls.Add(this.lsvSearch);
             this.Controls.Add(this.toolStrip2);
-            this.Name = "WSEmployee";
-            this.Text = "รายงานตามพนักงาน";
-            this.Load += new System.EventHandler(this.WSEmployee_Load);
+            this.Name = "WS_WH";
+            this.Text = "รายงานคามสาขา";
+            this.Load += new System.EventHandler(this.WS_WH_Load);
             this.toolStrip2.ResumeLayout(false);
             this.toolStrip2.PerformLayout();
             this.ResumeLayout(false);

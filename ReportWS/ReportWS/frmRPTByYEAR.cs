@@ -12,19 +12,19 @@ using System.Windows.Forms;
 
 namespace ReportWS
 {
-    public partial class WSYEAR : Form
+    public partial class frmRPTByYEAR : Form
     {
         string StrConn;
         string Brand;
 
-        public WSYEAR()
+        public frmRPTByYEAR()
         {
             InitializeComponent();
             StrConn = "Data Source = 192.168.1.24,1833; Initial Catalog =cmd-bx; Persist Security Info = True; User ID = sa; Password = 0211";
             Brand = "BC";
         }
 
-        public WSYEAR(string _strconn, string _brand)
+        public frmRPTByYEAR(string _strconn, string _brand)
         {
             InitializeComponent();
             StrConn = _strconn;

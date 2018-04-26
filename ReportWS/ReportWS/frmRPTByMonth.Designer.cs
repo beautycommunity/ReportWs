@@ -64,7 +64,7 @@
             this.tsbClose});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1215, 54);
+            this.toolStrip1.Size = new System.Drawing.Size(1080, 44);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -74,14 +74,14 @@
             this.tsbCondition.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsbCondition.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbCondition.Name = "tsbCondition";
-            this.tsbCondition.Size = new System.Drawing.Size(85, 51);
+            this.tsbCondition.Size = new System.Drawing.Size(74, 41);
             this.tsbCondition.Text = "เงื่อนไข";
             this.tsbCondition.Click += new System.EventHandler(this.tsbCondition_Click);
             // 
             // toolStripButton4
             // 
             this.toolStripButton4.Name = "toolStripButton4";
-            this.toolStripButton4.Size = new System.Drawing.Size(6, 54);
+            this.toolStripButton4.Size = new System.Drawing.Size(6, 44);
             // 
             // tsbExport
             // 
@@ -92,14 +92,14 @@
             this.tsbExport.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsbExport.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbExport.Name = "tsbExport";
-            this.tsbExport.Size = new System.Drawing.Size(98, 51);
+            this.tsbExport.Size = new System.Drawing.Size(85, 41);
             this.tsbExport.Text = "export";
             // 
             // tsmCSV
             // 
             this.tsmCSV.Image = ((System.Drawing.Image)(resources.GetObject("tsmCSV.Image")));
             this.tsmCSV.Name = "tsmCSV";
-            this.tsmCSV.Size = new System.Drawing.Size(216, 26);
+            this.tsmCSV.Size = new System.Drawing.Size(100, 22);
             this.tsmCSV.Text = "CSV";
             this.tsmCSV.Click += new System.EventHandler(this.tsmCSV_Click);
             // 
@@ -107,14 +107,14 @@
             // 
             this.tsmExcel.Image = ((System.Drawing.Image)(resources.GetObject("tsmExcel.Image")));
             this.tsmExcel.Name = "tsmExcel";
-            this.tsmExcel.Size = new System.Drawing.Size(216, 26);
+            this.tsmExcel.Size = new System.Drawing.Size(100, 22);
             this.tsmExcel.Text = "Excel";
             this.tsmExcel.Click += new System.EventHandler(this.tsmExcel_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 54);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 44);
             // 
             // tsbClose
             // 
@@ -122,7 +122,7 @@
             this.tsbClose.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsbClose.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbClose.Name = "tsbClose";
-            this.tsbClose.Size = new System.Drawing.Size(110, 51);
+            this.tsbClose.Size = new System.Drawing.Size(93, 41);
             this.tsbClose.Text = "ปิดหน้าต่าง";
             this.tsbClose.Click += new System.EventHandler(this.tsbClose_Click);
             // 
@@ -130,19 +130,21 @@
             // 
             this.tc.Controls.Add(this.tabPage1);
             this.tc.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tc.Location = new System.Drawing.Point(0, 54);
+            this.tc.Location = new System.Drawing.Point(0, 44);
+            this.tc.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tc.Name = "tc";
             this.tc.SelectedIndex = 0;
-            this.tc.Size = new System.Drawing.Size(1215, 803);
+            this.tc.Size = new System.Drawing.Size(1080, 562);
             this.tc.TabIndex = 1;
             // 
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.lv);
-            this.tabPage1.Location = new System.Drawing.Point(4, 30);
+            this.tabPage1.Location = new System.Drawing.Point(4, 26);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1207, 769);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabPage1.Size = new System.Drawing.Size(1072, 532);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "รายละเอียด";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -160,9 +162,10 @@
             this.lv.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lv.FullRowSelect = true;
             this.lv.GridLines = true;
-            this.lv.Location = new System.Drawing.Point(3, 3);
+            this.lv.Location = new System.Drawing.Point(3, 2);
+            this.lv.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lv.Name = "lv";
-            this.lv.Size = new System.Drawing.Size(1201, 763);
+            this.lv.Size = new System.Drawing.Size(1066, 528);
             this.lv.TabIndex = 0;
             this.lv.UseCompatibleStateImageBehavior = false;
             this.lv.View = System.Windows.Forms.View.Details;
@@ -209,14 +212,14 @@
             // 
             // frmRPTByMonth
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1215, 857);
+            this.ClientSize = new System.Drawing.Size(1080, 606);
             this.Controls.Add(this.tc);
             this.Controls.Add(this.toolStrip1);
-            this.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
+            this.Margin = new System.Windows.Forms.Padding(3, 6, 3, 6);
             this.Name = "frmRPTByMonth";
-            this.Text = "รายงานขายส่ง WS รายเดือน";
+            this.Text = "รายงานขายส่ง WS ตามเดือน";
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.tc.ResumeLayout(false);

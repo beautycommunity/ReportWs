@@ -126,35 +126,35 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WSDetail.cs">
+    <Compile Include="frmRPTByDetail.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WSDetail.Designer.cs">
-      <DependentUpon>WSDetail.cs</DependentUpon>
+    <Compile Include="frmRPTByDetail.Designer.cs">
+      <DependentUpon>frmRPTByDetail.cs</DependentUpon>
     </Compile>
-    <Compile Include="WSCustomer.cs">
+    <Compile Include="frmRPTByCustomer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WSCustomer.Designer.cs">
-      <DependentUpon>WSCustomer.cs</DependentUpon>
+    <Compile Include="frmRPTByCustomer.Designer.cs">
+      <DependentUpon>frmRPTByCustomer.cs</DependentUpon>
     </Compile>
-    <Compile Include="WSEmployee.cs">
+    <Compile Include="frmRPTByEmployee.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WSEmployee.Designer.cs">
-      <DependentUpon>WSEmployee.cs</DependentUpon>
+    <Compile Include="frmRPTByEmployee.Designer.cs">
+      <DependentUpon>frmRPTByEmployee.cs</DependentUpon>
     </Compile>
-    <Compile Include="WSYEAR.cs">
+    <Compile Include="frmRPTByYEAR.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WSYEAR.Designer.cs">
-      <DependentUpon>WSYEAR.cs</DependentUpon>
+    <Compile Include="frmRPTByYEAR.Designer.cs">
+      <DependentUpon>frmRPTByYEAR.cs</DependentUpon>
     </Compile>
-    <Compile Include="WS_WH.cs">
+    <Compile Include="frmRPTByWH.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WS_WH.Designer.cs">
-      <DependentUpon>WS_WH.cs</DependentUpon>
+    <Compile Include="frmRPTByWH.Designer.cs">
+      <DependentUpon>frmRPTByWH.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="frmBrandDialog.resx">
       <DependentUpon>frmBrandDialog.cs</DependentUpon>
@@ -198,20 +198,20 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="WSDetail.resx">
-      <DependentUpon>WSDetail.cs</DependentUpon>
+    <EmbeddedResource Include="frmRPTByDetail.resx">
+      <DependentUpon>frmRPTByDetail.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WSCustomer.resx">
-      <DependentUpon>WSCustomer.cs</DependentUpon>
+    <EmbeddedResource Include="frmRPTByCustomer.resx">
+      <DependentUpon>frmRPTByCustomer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WSEmployee.resx">
-      <DependentUpon>WSEmployee.cs</DependentUpon>
+    <EmbeddedResource Include="frmRPTByEmployee.resx">
+      <DependentUpon>frmRPTByEmployee.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WSYEAR.resx">
-      <DependentUpon>WSYEAR.cs</DependentUpon>
+    <EmbeddedResource Include="frmRPTByYEAR.resx">
+      <DependentUpon>frmRPTByYEAR.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WS_WH.resx">
-      <DependentUpon>WS_WH.cs</DependentUpon>
+    <EmbeddedResource Include="frmRPTByWH.resx">
+      <DependentUpon>frmRPTByWH.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
