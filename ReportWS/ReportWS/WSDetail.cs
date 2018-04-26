@@ -20,8 +20,8 @@ namespace ReportWS
         public WSDetail()
         {
             InitializeComponent();
-            StrConn = "Data Source = 192.168.1.24,1833; Initial Catalog =cmd-bx; Persist Security Info = True; User ID = sa; Password = 0211";
-            Brand = "BC";
+            StrConn = "Data Source = 192.168.1.220; Initial Catalog =cmd-bx; Persist Security Info = True; User ID = sa; Password = 0211";
+            Brand = "BB";
         }
 
         public WSDetail(string _strconn, string _brand)
