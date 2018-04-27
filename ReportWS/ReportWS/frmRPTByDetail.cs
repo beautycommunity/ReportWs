@@ -149,5 +149,10 @@ namespace ReportWS
         {
             this.Close();
         }
+
+        private void csvToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            lsvSearch.ExportToCsv(true, "");
+        }
     }
 }

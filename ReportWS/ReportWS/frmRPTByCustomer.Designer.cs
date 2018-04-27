@@ -38,6 +38,7 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnClose = new System.Windows.Forms.ToolStripButton();
             this.lsvSearch = new kBeautyLibrary.kbListView(this.components);
+            this.csvToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -75,7 +76,8 @@
             // mnuExportError
             // 
             this.mnuExportError.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuExportExcel});
+            this.mnuExportExcel,
+            this.csvToolStripMenuItem});
             this.mnuExportError.Image = ((System.Drawing.Image)(resources.GetObject("mnuExportError.Image")));
             this.mnuExportError.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.mnuExportError.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -86,7 +88,7 @@
             // mnuExportExcel
             // 
             this.mnuExportExcel.Name = "mnuExportExcel";
-            this.mnuExportExcel.Size = new System.Drawing.Size(102, 22);
+            this.mnuExportExcel.Size = new System.Drawing.Size(152, 22);
             this.mnuExportExcel.Text = "Excel";
             this.mnuExportExcel.Click += new System.EventHandler(this.mnuExportExcel_Click);
             // 
@@ -121,14 +123,21 @@
             this.lsvSearch.UseCompatibleStateImageBehavior = false;
             this.lsvSearch.View = System.Windows.Forms.View.Details;
             // 
-            // WSCustomer
+            // csvToolStripMenuItem
+            // 
+            this.csvToolStripMenuItem.Name = "csvToolStripMenuItem";
+            this.csvToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.csvToolStripMenuItem.Text = "csv";
+            this.csvToolStripMenuItem.Click += new System.EventHandler(this.csvToolStripMenuItem_Click);
+            // 
+            // frmRPTByCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(909, 493);
             this.Controls.Add(this.lsvSearch);
             this.Controls.Add(this.toolStrip2);
-            this.Name = "WSCustomer";
+            this.Name = "frmRPTByCustomer";
             this.Text = "รายงานตามลูกค้า";
             this.Load += new System.EventHandler(this.WSEmployee_Load);
             this.toolStrip2.ResumeLayout(false);
@@ -148,5 +157,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton btnClose;
         private kBeautyLibrary.kbListView lsvSearch;
+        private System.Windows.Forms.ToolStripMenuItem csvToolStripMenuItem;
     }
 }

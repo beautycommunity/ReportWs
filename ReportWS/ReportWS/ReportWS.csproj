@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{FB9A3735-3412-4352-976C-662D64427843}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <OutputType>WinExe</OutputType>
     <RootNamespace>ReportWS</RootNamespace>
     <AssemblyName>ReportWS</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
@@ -38,6 +38,9 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="k.libary">
+      <HintPath>F:\Project\k.libary.dll</HintPath>
+    </Reference>
     <Reference Include="kBeautyContext">
       <HintPath>F:\Beauty\kBeautyContext\bin\Debug\kBeautyContext.dll</HintPath>
     </Reference>

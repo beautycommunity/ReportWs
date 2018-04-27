@@ -109,5 +109,10 @@ namespace ReportWS
         {
             lsvSearch.ExportToExcel("1,2,3,4,5");
         }
+
+        private void csvToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            lsvSearch.ExportToCsv(true, "");
+        }
     }
 }

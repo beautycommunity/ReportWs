@@ -1,4 +1,5 @@
-﻿using System;
+﻿using k.libary;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-using kBeautyLibrary;
+//using kBeautyLibrary;
 
 namespace ReportWS
 {
@@ -63,9 +64,8 @@ namespace ReportWS
                     using (cWaitIndicator cw = new cWaitIndicator())
                     {
                         DataSet ds = new DataSet();
-
-                        ds = cData.getDataSetWithQueryCommand(StrConn, frmsql.Text, 1000000, true);
-
+                     
+                        ds = cData.getDataSetWithSqlCommand(StrConn, frmsql.Text, 1000000, true);
                         //lv.addDataWithDataset(ds, true, true);
 
                         lv.Items.Clear();
